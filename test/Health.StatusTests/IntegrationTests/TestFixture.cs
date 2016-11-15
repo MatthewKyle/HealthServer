@@ -1,24 +1,24 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using System.Reflection;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.PlatformAbstractions;
-
-namespace Health.StatusTests.IntegrationTests
+﻿namespace Health.StatusTests.IntegrationTests
 {
+    using System;
+    using System.IO;
+    using System.Net.Http;
+    using System.Reflection;
+
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc.ApplicationParts;
+    using Microsoft.AspNetCore.TestHost;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.PlatformAbstractions;
+
     /// <summary>
-    /// A test fixture which hosts the target project (project we wish to test) in an in-memory server.
+    ///     A test fixture which hosts the target project (project we wish to test) in an in-memory server.
     /// </summary>
     /// <typeparam name="TStartup">Target project's startup type</typeparam>
     public class TestFixture<TStartup> : IDisposable
     {
         private const string SolutionName = "HealthServer.sln";
+
         private readonly TestServer _server;
 
         public TestFixture()
@@ -31,24 +31,24 @@ namespace Health.StatusTests.IntegrationTests
             var startupAssembly = typeof(TStartup).GetTypeInfo().Assembly;
             var contentRoot = GetProjectPath(solutionRelativeTargetProjectParentDir, startupAssembly);
 
-            var builder = new WebHostBuilder()
-                .UseContentRoot(contentRoot)
-                .ConfigureServices(InitializeServices)
-                .UseEnvironment("Development")
-                .UseStartup(typeof(TStartup));
+            var builder =
+                new WebHostBuilder().UseContentRoot(contentRoot)
+                    .ConfigureServices(this.InitializeServices)
+                    .UseEnvironment("Development")
+                    .UseStartup(typeof(TStartup));
 
-            _server = new TestServer(builder);
+            this._server = new TestServer(builder);
 
-            Client = _server.CreateClient();
-            Client.BaseAddress = new Uri("http://localhost");
+            this.Client = this._server.CreateClient();
+            this.Client.BaseAddress = new Uri("http://localhost");
         }
 
         public HttpClient Client { get; }
 
         public void Dispose()
         {
-            Client.Dispose();
-            _server.Dispose();
+            this.Client.Dispose();
+            this._server.Dispose();
         }
 
         protected virtual void InitializeServices(IServiceCollection services)
@@ -63,7 +63,6 @@ namespace Health.StatusTests.IntegrationTests
 
         private static string GetProjectPath(string solutionRelativePath, Assembly startupAssembly)
         {
-
             var projectName = startupAssembly.GetName().Name;
 
             var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;

@@ -1,8 +1,10 @@
-﻿namespace Health.StatusTests.IntegrationTests
+﻿namespace HealthServerTests.IntegrationTests
 {
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
+
+    using Health.StatusTests.IntegrationTests;
 
     using HealthServer.HealthChecks;
     using HealthServer.Models;
@@ -10,13 +12,14 @@
     using HealthServerTests.IntegrationTests.TestStartups;
 
     using Newtonsoft.Json;
+
     using Xunit;
 
-    public class BasicIntegrationTest : IClassFixture<TestFixture<DefaultStartup>>
+    public class DefaultWithOptionsINtegrationTests : IClassFixture<TestFixture<DefaultWithOptionsStartup>>
     {
         private readonly HttpClient _client;
 
-        public BasicIntegrationTest(TestFixture<DefaultStartup> fixture)
+        public DefaultWithOptionsINtegrationTests(TestFixture<DefaultWithOptionsStartup> fixture)
         {
             this._client = fixture.Client;
         }
@@ -24,7 +27,7 @@
         [Fact]
         public async Task CheckHttpMethod_Get_Health_Success()
         {
-            var response = await this._client.GetAsync("/health");
+            var response = await this._client.GetAsync("/healthz");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 

@@ -1,12 +1,12 @@
-﻿namespace Health.Status.Models
+﻿namespace HealthServer.Models
 {
     public class HealthCheckResult
     {
         public HealthCheckResult(string name, bool success, object response = null)
         {
-            Name = name;
-            IsSuccess = success;
-            Response = response;
+            this.Name = name;
+            this.IsSuccess = success;
+            this.Response = response;
         }
 
         public bool IsSuccess { get; set; }

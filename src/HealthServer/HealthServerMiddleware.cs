@@ -1,11 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Health.Status.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-
-namespace Health.Status
+﻿namespace HealthServer
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using HealthServer.Models;
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Logging;
+
     public class HealthServerMiddleware
     {
         private readonly ILogger<HealthServerMiddleware> _logger;
@@ -14,7 +16,7 @@ namespace Health.Status
         public HealthServerMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
         {
             this.next = next;
-            _logger = loggerFactory.CreateLogger<HealthServerMiddleware>();
+            this._logger = loggerFactory.CreateLogger<HealthServerMiddleware>();
         }
 
         public async Task Invoke(HttpContext context, IHealthStatusHandler handler)
@@ -23,17 +25,17 @@ namespace Health.Status
             {
                 if (context.Request.Path.StartsWithSegments(new PathString(handler.Route)))
                 {
-                    _logger.LogDebug($"Calling Handler for Path: {handler.Route}");
+                    this._logger.LogDebug($"Calling Handler for Path: {handler.Route}");
                     await handler.Execute(context);
                 }
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception.Message);
+                this._logger.LogError(exception.Message);
             }
             finally
             {
-                await next.Invoke(context);
+                await this.next.Invoke(context);
             }
         }
     }

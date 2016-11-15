@@ -1,9 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Health.Status.Models;
-
-namespace Health.Status.HealthChecks
+﻿namespace HealthServer.HealthChecks
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using HealthServer.Models;
+
     public class DefaultHealthCheck : IHealthStatusCheck
     {
         private readonly Action<IHealthContext> _checkFunc;
@@ -11,33 +12,33 @@ namespace Health.Status.HealthChecks
 
         public DefaultHealthCheck()
         {
-            name = GetType().Name;
-            SetCheck();
+            this.name = this.GetType().Name;
+            this.SetCheck();
         }
 
         public DefaultHealthCheck(Action<IHealthContext> checkFunc)
         {
-            _checkFunc = checkFunc;
+            this._checkFunc = checkFunc;
 
-            name = GetType().Name;
-            SetCheck();
+            this.name = this.GetType().Name;
+            this.SetCheck();
         }
 
         public Action<IHealthContext> Check { get; set; }
 
         public Task Execute(IHealthContext context)
         {
-            return Task.Factory.StartNew(() => Check.Invoke(context));
+            return Task.Factory.StartNew(() => this.Check.Invoke(context));
         }
 
         private void DefaultCheck(IHealthContext context)
         {
-            context.AddCheckState(new HealthCheckResult(name, true));
+            context.AddCheckState(new HealthCheckResult(this.name, true));
         }
 
         private void SetCheck()
         {
-            Check = _checkFunc ?? DefaultCheck;
+            this.Check = this._checkFunc ?? this.DefaultCheck;
         }
     }
 }

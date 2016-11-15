@@ -1,31 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using Health.Status.Models;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-
-namespace Health.Status.Handlers
+﻿namespace HealthServer.Handlers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using HealthServer.Configuration.DependencyInjection.Options;
+    using HealthServer.Models;
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Options;
+
     public class DefaultHealthStatusHandler : IHealthStatusHandler
     {
         private readonly IEnumerable<IHealthStatusCheck> _checks;
 
-        public DefaultHealthStatusHandler(IEnumerable<IHealthStatusCheck> checks)
+        private readonly IOptions<HealthServerHandlerOptions> options;
+
+        public DefaultHealthStatusHandler(IEnumerable<IHealthStatusCheck> checks, IOptions<HealthServerHandlerOptions> options)
         {
-            _checks = checks;
-            Route = "/health";
+            this._checks = checks;
+            this.options = options;
+            this.Route = options.Value.DefaultHandlerRoute;
         }
 
-        public string Route { get; }
+        public string Route { get; private set; }
 
         public async Task Execute(HttpContext context)
         {
             var healthContext = new HealthContext();
             try
             {
-                foreach (var healthStatusCheck in _checks)
+                foreach (var healthStatusCheck in this._checks)
                 {
                     await healthStatusCheck.Execute(healthContext);
                 }

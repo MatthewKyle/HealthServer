@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Health.Status.Configuration.DependencyInjection
+﻿namespace HealthServer.Configuration.DependencyInjection
 {
+    using Microsoft.Extensions.DependencyInjection;
+
     public interface IHealthServerBuilder
     {
         IServiceCollection Services { get; }

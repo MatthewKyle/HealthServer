@@ -1,12 +1,13 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-
-namespace Health.Status.Models
+﻿namespace HealthServer.Models
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+
     public interface IHealthStatusHandler
     {
         string Route { get; }
+
         Task Execute(HttpContext context);
     }
 }

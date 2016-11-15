@@ -1,12 +1,12 @@
-﻿using System;
-using Health.Status.Configuration.DependencyInjection.BuilderExtensions;
-using Health.Status.Configuration.DependencyInjection.Options;
-using Health.Status.Models;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Health.Status.Configuration.DependencyInjection
+﻿namespace HealthServer.Configuration.DependencyInjection
 {
+    using System;
+
+    using HealthServer.Configuration.DependencyInjection.BuilderExtensions;
+    using HealthServer.Configuration.DependencyInjection.Options;
+
+    using Microsoft.Extensions.DependencyInjection;
+
     public static class HealthServerExtensions
     {
         public static IHealthServerBuilder AddHealthServerBuilder(this IServiceCollection services)
@@ -24,7 +24,7 @@ namespace Health.Status.Configuration.DependencyInjection
         }
 
         public static IHealthServerBuilder AddHealthServer(this IServiceCollection services,
-            Action<HealthServerOptions> setup)
+            Action<HealthServerHandlerOptions> setup)
         {
             services.Configure(setup);
 

@@ -1,4 +1,6 @@
 {
+    "title": "HealthServer",
+    "description": "A Middleware for Health checks",
   "version": "1.0.0-*",
 
     "dependencies": {

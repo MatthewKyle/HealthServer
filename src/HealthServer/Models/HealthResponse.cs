@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace Health.Status.Models
+﻿namespace HealthServer.Models
 {
+    using System.Collections.Generic;
+
     public class HealthResponse
     {
         public HealthResponse()
         {
-            Results = new List<HealthCheckResult>();
+            this.Results = new List<HealthCheckResult>();
         }
 
         public bool IsFailed { get; set; }

@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-
-namespace Health.Status.Models
+﻿namespace HealthServer.Models
 {
+    using System.Threading.Tasks;
+
     public interface IHealthContext
     {
         HealthResponse Response { get; }
