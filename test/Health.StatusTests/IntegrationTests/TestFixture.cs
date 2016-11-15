@@ -18,7 +18,7 @@ namespace Health.StatusTests.IntegrationTests
     /// <typeparam name="TStartup">Target project's startup type</typeparam>
     public class TestFixture<TStartup> : IDisposable
     {
-        private const string SolutionName = "Health.Status.sln";
+        private const string SolutionName = "HealthServer.sln";
         private readonly TestServer _server;
 
         public TestFixture()
