@@ -1,7 +1,14 @@
 {
     "title": "HealthServer",
     "description": "A Middleware for Health checks",
-  "version": "1.0.0-*",
+    "authors": [ "Matthew Kyle" ],
+
+    "packOptions": {
+        "tags": [ "HealthCheck", "Health Check" ],
+        "projectUrl": "https://github.com/MatthewKyle/HealthServer",
+        "licenseUrl": "https://github.com/MatthewKyle/HealthServer/blob/master/LICENSE",
+    },
+    "version": "1.0.0-*",
 
     "dependencies": {
         "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
@@ -9,6 +16,7 @@
         "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
         "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
         "Microsoft.Extensions.Options": "1.0.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
         "NETStandard.Library": "1.6.0",
         "Newtonsoft.Json": "9.0.1"
     },
