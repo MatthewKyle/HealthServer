@@ -1,16 +1,15 @@
-﻿namespace Health.StatusTests.IntegrationTests
+﻿using System;
+using System.IO;
+using System.Net.Http;
+using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
+
+namespace HealthServerTests.IntegrationTests
 {
-    using System;
-    using System.IO;
-    using System.Net.Http;
-    using System.Reflection;
-
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc.ApplicationParts;
-    using Microsoft.AspNetCore.TestHost;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.PlatformAbstractions;
-
     /// <summary>
     ///     A test fixture which hosts the target project (project we wish to test) in an in-memory server.
     /// </summary>

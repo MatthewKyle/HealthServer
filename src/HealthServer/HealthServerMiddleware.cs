@@ -35,7 +35,10 @@
             }
             finally
             {
-                await this.next.Invoke(context);
+                if (!context.Response.HasStarted)
+                {
+                    await this.next.Invoke(context);
+                }
             }
         }
     }

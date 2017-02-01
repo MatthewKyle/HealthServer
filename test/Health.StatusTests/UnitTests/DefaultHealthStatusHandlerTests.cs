@@ -1,18 +1,15 @@
-﻿namespace Health.StatusTests.UnitTests
+﻿using System;
+using System.Collections.Generic;
+using HealthServer.Configuration.DependencyInjection.Options;
+using HealthServer.Handlers;
+using HealthServer.HealthChecks;
+using HealthServer.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
+using Xunit;
+
+namespace HealthServerTests.UnitTests
 {
-    using System;
-    using System.Collections.Generic;
-
-    using HealthServer.Configuration.DependencyInjection.Options;
-    using HealthServer.Handlers;
-    using HealthServer.HealthChecks;
-    using HealthServer.Models;
-
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Extensions.Options;
-
-    using Xunit;
-
     public class DefaultHealthStatusHandlerTests
     {
         [Fact]

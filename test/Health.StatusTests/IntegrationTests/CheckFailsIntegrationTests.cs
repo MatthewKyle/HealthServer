@@ -1,19 +1,15 @@
-﻿namespace Health.StatusTests.IntegrationTests
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using HealthServer.Models;
+using HealthServerTests.IntegrationTests.TestStartups;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Xunit;
+
+namespace HealthServerTests.IntegrationTests
 {
-    using System;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-
-    using HealthServer.Models;
-
-    using HealthServerTests.IntegrationTests.TestStartups;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-
-    using Xunit;
-
     public class CheckFailsIntegrationTests : IClassFixture<TestFixture<CheckFailsStarup>>
     {
         private readonly HttpClient _client;

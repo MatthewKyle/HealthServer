@@ -3,9 +3,6 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-
-    using Health.StatusTests.IntegrationTests;
-
     using HealthServer.HealthChecks;
     using HealthServer.Models;
 

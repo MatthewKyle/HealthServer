@@ -6,7 +6,7 @@
     "dependencies": {
         "System.Runtime.Serialization.Primitives": "4.1.1",
         "xunit": "2.1.0",
-        "dotnet-test-xunit": "1.0.0-rc2-192208-24",
+        "dotnet-test-xunit": "1.0.0-rc2-build10015",
         "Microsoft.AspNetCore.TestHost": "1.0.0",
         "HealthServer": "1.0.0-*",
         "Microsoft.AspNetCore.Http": "1.0.0",
@@ -15,7 +15,8 @@
         "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
         "Microsoft.Extensions.Logging.Console": "1.0.0",
         "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-        "System.Net.Http": "4.1.0"
+        "System.Net.Http": "4.1.0",
+        "Microsoft.Extensions.Logging.Debug": "1.0.0"
     },
   "testRunner": "xunit",
   "frameworks": {

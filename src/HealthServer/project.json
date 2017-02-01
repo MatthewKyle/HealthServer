@@ -6,7 +6,7 @@
     "packOptions": {
         "tags": [ "HealthCheck", "Health Check" ],
         "projectUrl": "https://github.com/MatthewKyle/HealthServer",
-        "licenseUrl": "https://github.com/MatthewKyle/HealthServer/blob/master/LICENSE",
+        "licenseUrl": "https://github.com/MatthewKyle/HealthServer/blob/master/LICENSE"
     },
     "version": "1.0.0-*",
 

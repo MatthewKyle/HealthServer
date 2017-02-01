@@ -1,12 +1,10 @@
-﻿namespace Health.StatusTests.UnitTests
+﻿using System;
+using HealthServer.HealthChecks;
+using HealthServer.Models;
+using Xunit;
+
+namespace HealthServerTests.UnitTests
 {
-    using System;
-
-    using HealthServer.HealthChecks;
-    using HealthServer.Models;
-
-    using Xunit;
-
     public class DefaultHealthCheckTests
     {
         [Fact]
