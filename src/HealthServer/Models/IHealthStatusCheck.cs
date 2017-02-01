@@ -5,5 +5,7 @@
     public interface IHealthStatusCheck
     {
         Task Execute(IHealthContext context);
+
+        string Name { get; }
     }
 }

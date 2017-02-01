@@ -23,7 +23,7 @@
         {
             try
             {
-                if (context.Request.Path.StartsWithSegments(new PathString(handler.Route)))
+                if (context.Request.Path.StartsWithSegments(new PathString(handler.Route)) && context.Request.Method == "GET")
                 {
                     this._logger.LogDebug($"Calling Handler for Path: {handler.Route}");
                     await handler.Execute(context);

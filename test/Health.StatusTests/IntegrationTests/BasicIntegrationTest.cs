@@ -34,5 +34,19 @@
             Assert.NotNull(healthResponse);
             Assert.Equal(typeof(DefaultHealthCheck).Name, healthResponse.Results[0].Name);
         }
+
+        [Fact]
+        public async Task CheckHttpMethod_POST_Health_Fails()
+        {
+            var response = await this._client.PostAsync("/health", new StringContent(""));
+
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            var body = await response.Content.ReadAsStringAsync();
+            var healthResponse = JsonConvert.DeserializeObject<HealthResponse>(body);
+
+            Assert.NotNull(healthResponse);
+            Assert.Equal(typeof(DefaultHealthCheck).Name, healthResponse.Results[0].Name);
+        }
     }
 }

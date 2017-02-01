@@ -31,6 +31,8 @@
             return Task.Factory.StartNew(() => this.Check.Invoke(context));
         }
 
+        public string Name => name;
+
         private void DefaultCheck(IHealthContext context)
         {
             context.AddCheckState(new HealthCheckResult(this.name, true));

@@ -1,4 +1,6 @@
-﻿namespace HealthServer.Handlers
+﻿using System.Threading;
+
+namespace HealthServer.Handlers
 {
     using System;
     using System.Collections.Generic;
@@ -14,12 +16,13 @@
     {
         private readonly IEnumerable<IHealthStatusCheck> _checks;
 
-        private readonly IOptions<HealthServerHandlerOptions> options;
+        private readonly IOptions<HealthServerHandlerOptions> _options;
 
-        public DefaultHealthStatusHandler(IEnumerable<IHealthStatusCheck> checks, IOptions<HealthServerHandlerOptions> options)
+        public DefaultHealthStatusHandler(IEnumerable<IHealthStatusCheck> checks,
+            IOptions<HealthServerHandlerOptions> options)
         {
             this._checks = checks;
-            this.options = options;
+            this._options = options;
             this.Route = options.Value.DefaultHandlerRoute;
         }
 
@@ -32,7 +35,15 @@
             {
                 foreach (var healthStatusCheck in this._checks)
                 {
-                    await healthStatusCheck.Execute(healthContext);
+                    try
+                    {
+                        await healthStatusCheck.Execute(healthContext);
+                    }
+                    catch (Exception exception)
+                    {
+                        healthContext.AddCheckState(new HealthCheckResult(healthStatusCheck.Name, false, exception));
+                    }
+
                 }
             }
             catch (Exception exception)
