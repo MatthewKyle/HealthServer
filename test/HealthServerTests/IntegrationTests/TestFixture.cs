@@ -21,14 +21,16 @@ namespace HealthServerTests.IntegrationTests
         private readonly TestServer _server;
 
         public TestFixture()
-            : this(Path.Combine("test"))
+            : this("test")
         {
         }
 
         protected TestFixture(string solutionRelativeTargetProjectParentDir)
+
         {
+            var path = Path.Combine(solutionRelativeTargetProjectParentDir);
             var startupAssembly = typeof(TStartup).GetTypeInfo().Assembly;
-            var contentRoot = GetProjectPath(solutionRelativeTargetProjectParentDir, startupAssembly);
+            var contentRoot = GetProjectPath(path, startupAssembly);
 
             var builder =
                 new WebHostBuilder().UseContentRoot(contentRoot)
