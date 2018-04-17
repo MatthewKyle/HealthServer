@@ -3,30 +3,29 @@
   <PropertyGroup>
     <Description>A Middleware for Health checks</Description>
     <AssemblyTitle>HealthServer</AssemblyTitle>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Authors>Matthew Kyle</Authors>
-    <TargetFrameworks>net461;netstandard1.6</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>HealthServer</AssemblyName>
     <PackageId>HealthServer</PackageId>
     <PackageTags>HealthCheck;Health Check</PackageTags>
-    <PackageReleaseNotes>Fixed Possible call to next after reponse Started.</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated to Netstandard 2.0</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/MatthewKyle/HealthServer</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/MatthewKyle/HealthServer/blob/master/LICENSE</PackageLicenseUrl>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard2.0' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">

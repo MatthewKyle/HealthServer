@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:50542/",
+      "applicationUrl": "http://localhost:50542/healthz",
       "sslPort": 0
     }
   },
@@ -21,7 +21,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:50543"
+      "applicationUrl": "http://localhost:50543/healthz"
     }
   }
 }

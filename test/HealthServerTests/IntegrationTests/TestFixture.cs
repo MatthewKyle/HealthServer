@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.PlatformAbstractions;
+
 
 namespace HealthServerTests.IntegrationTests
 {
@@ -66,7 +66,7 @@ namespace HealthServerTests.IntegrationTests
         {
             var projectName = startupAssembly.GetName().Name;
 
-            var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+            var applicationBasePath = Directory.GetCurrentDirectory();
 
             var directoryInfo = new DirectoryInfo(applicationBasePath);
             do
